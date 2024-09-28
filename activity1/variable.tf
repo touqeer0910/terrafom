@@ -47,7 +47,7 @@ variable "subnets" {
       Project = "learning"
     }
     }, {
-    cidr_block        = "10.0.3.0/24"
+    cidr_block        = "10.0.4.0/24"
     availability_zone = "ap-south-1b"
     vpc_id            = "aws_vpc.main.id"
     tags = {
