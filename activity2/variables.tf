@@ -32,7 +32,7 @@ variable "subnet" {
   }))
   default = [ {
     name = "we1"
-    sub_address = [ "10.0.0.0/24" ]
+    sub_address = [ "10.0.5.0/24" ]
   },
    {
     name = "we2"
