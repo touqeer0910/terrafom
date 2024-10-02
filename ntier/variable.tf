@@ -14,3 +14,11 @@ variable "public_subnets" {
   }))
 
 }
+variable "private_subnets" {
+  type = list(object({
+    cidr_block = string
+    tags       = map(string)
+    az         = string
+  }))
+
+}
