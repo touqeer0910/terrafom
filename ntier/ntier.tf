@@ -24,6 +24,35 @@ resource "aws_subnet" "private" {
 resource "aws_internet_gateway" "igw" {
   count  = length(var.public_subnets) > 0 ? 1 : 0
   vpc_id = aws_vpc.ntier.id
-  tags   = var.aws_igw.tag
+  tags = {
+    Name = "aws_igw"
+  }
 
+}
+resource "aws_route_table" "public" {
+  count  = length(var.public_subnets) > 0 ? 1 : 0
+  vpc_id = aws_vpc.ntier.id
+  tags = {
+    Name = "public route"
+  }
+
+}
+resource "aws_route_table" "private" {
+  count  = length(var.private_subnets) > 0 ? 1 : 0
+  vpc_id = aws_vpc.ntier.id
+  tags = {
+    Name = "private route"
+  }
+
+}
+resource "aws_route_table_association" "public_aso" {
+  count = length(var.public_subnets)
+  subnet_id = aws_subnet.public[count.index].id
+  route_table_id = aws_route_table.public[0].id
+
+}
+resource "aws_route_table_association" "private_aso" {
+  count = length(var.private_subnets)
+  subnet_id = aws_subnet.private[count.index].id
+  route_table_id = aws_route_table.private[0].id
 }
