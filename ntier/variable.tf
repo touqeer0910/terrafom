@@ -22,3 +22,47 @@ variable "private_subnets" {
   }))
 
 }
+## this is web sec grp
+
+variable "web_security_group" {
+  type = object({
+    name = string
+    ingress = list(object({
+      from_port  = number
+      protocol   = string
+      cidr_range = string
+    }))
+
+  })
+
+}
+#this app sec grp
+
+variable "app_security_group" {
+  type = object({
+    name = string
+    ingress = list(object({
+      from_port  = number
+      protocol   = string
+      cidr_range = string
+    }))
+
+  })
+
+}
+# this db sec grp
+
+variable "db_security_group" {
+  type = object({
+    name = string
+    ingress = list(object({
+      from_port  = number
+      
+      protocol   = string
+      cidr_range = string
+    }))
+
+  })
+
+}
+
