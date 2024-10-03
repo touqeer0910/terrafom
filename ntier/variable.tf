@@ -56,8 +56,8 @@ variable "db_security_group" {
   type = object({
     name = string
     ingress = list(object({
-      from_port  = number
-      
+      from_port = number
+
       protocol   = string
       cidr_range = string
     }))
